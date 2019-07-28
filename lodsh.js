@@ -39,23 +39,111 @@ const after = (  ) => {
 	console.log('done saving!')
     })
 
+    listRes = []
+    
     _.forEach (saves, type => {
 
-	console.log({'type': type, 'complete':done})
+	listRes.push({'type': type, 'complete':done})
     })
 
-    
+
+    return listRes
 } 
 
 
+const ary = (  ) => {
+
+    resutl = _.map(['6','8','10'], _.ary( parseInt, 1))
+
+    return resutl
+} 
+
+
+const assign = (  ) => {
+
+    function Foo () {
+	this.a = 1
+    }
+
+    function Bar () {
+	this.c = 3
+    }
+
+    Foo.prototype.b = 2
+    Bar.prototype.d = 4
+
+    res = _.assign({ 'a': 0 }, new Foo, new Bar)
+
+    return res
+}
+
+const assignIn = (  ) => {
+
+    function Foo () {
+	this.a = 1
+    }
+
+    function Bar () {
+	this.c = 3
+    }
+
+    Foo.prototype.b = 2
+    Bar.prototype.d = 4
+
+    res = _.assignIn({ 'a': 0 }, new Foo, new Bar)
+
+    return res
+}
+
+
+const chunk = (  ) => {
+    
+    tow = _.chunk(['a','b','c','d'], 2)
+    tri = _.chunk(['a','b','c','d'], 3)
+
+    return {'thow': tow, 'tri': tri}
+} 
+
+const compact = (  ) => {
+
+    result = _.compact([0,1,false, 2, '', 3])
+
+    return result
+} 
+
+const concat = (  ) => {
+
+    var array = [1]
+    var other = _.concat(array, 2, [3], [[4]])
+
+    res = {}
+
+    res.other = other
+    res.arr = array
+
+    return res
+} 
+
 const meth = (  ) => {
+
 
 } 
 
 
 const main = (() => {
 
+    listFunc = [
+	add,
+	after,
+	ary,
+	assign,
+	assignIn,
+	chunk,
+	compact,
+	concat
+    ]
 
-    //    add ()
-    after()
+    const run = func => func (  )
+
+    console.log(run(listFunc[listFunc.length-1]))
 })()
