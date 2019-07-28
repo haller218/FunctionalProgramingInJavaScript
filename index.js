@@ -191,6 +191,67 @@ const sortSideefects = (  ) => {
     console.log ( arr )
 }
 
+let enrollment = [
+    {enrolled: 2, grade: 100},
+    {enrolled: 2, grade: 80},
+    {enrolled: 1, grade: 89},
+]
+
+
+var totalGrades = 0
+
+var totalStudentsFound = 0
+for ( let i = 0; i < enrollment.length; i ++ ) {
+
+    let student = enrollment [ i ]
+    if ( student !== null ) {
+
+	if ( student.enrolled > 1 ) {
+
+	    totalGrades += student.grade
+	    totalStudentsFound++
+	}
+    }
+}
+
+var average = totalGrades / totalStudentsFound ; // -> 90
+
+console.log ( average )
+
+
+// functional aprotch
+
+const takeElementFromObject = att => obj => obj[att]
+
+const grathen = frist => second => frist > second
+
+const find = arr => func => arr.filter ( func )
+
+const applyGrtToObj = att => tested => obj =>
+      grathen ( takeElementFromObject ( att )( obj ) )( tested )
+
+const findElemtByRequirement = arr => field => requirement =>
+      find ( arr )( applyGrtToObj ( field )( requirement ) )
+
+const some = arr => arr.reduce ( ( ac , n ) => ac + n )
+
+const divide = frist => second => frist / second
+
+const totalElements = arr => arr.reduce( (_, __, i) => i + 1 )
+
+const recreateArrayOfObjects = arr => att => validate => arr.map ( el =>
+								   validate ( el ) )
+
+const averigeFromListObjects = list => att => 
+      list.reduce ( ( ac, now ) => divide ( some (
+	  recreateArrayOfObjects ( list )( att )( takeElementFromObject ( att ) ) ) )
+		    ( totalElements ( list ) ) )
+
+result = averigeFromListObjects ( findElemtByRequirement ( enrollment )
+				  ( 'enrolled' )( 1 ) )( 'grade' )
+
+console.log ( result )
+
 
 
 
