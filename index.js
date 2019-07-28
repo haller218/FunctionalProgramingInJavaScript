@@ -71,3 +71,37 @@ function showStudent (ssn) {
 }
 
 showStudent('444-44-4444')
+
+
+// decomposing the show student program
+
+var find = curry ( function(db, id) {
+    var obj = db.get(id)
+    if (obj === null) {
+	throw new Error ('Object not found')
+    }
+    return obj
+})
+
+var csv = student => {
+
+    return `student.ssn, 
+	student.fristname, 
+	student.lastname`
+}
+
+
+var append = curry (function (elementId, info) {
+
+    console.log (elementId + '=' +info)
+})
+
+var showStudent = run =>  {
+
+    append('#student-info')
+    cvs
+    find(db)
+}
+
+showStudent ('444-44-4444')
+
