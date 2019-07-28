@@ -78,7 +78,7 @@ const counterSideEfeects = (  ) => {
     
 //    console.log ( plus2increment ( 0 ) ) 
 
-    console.log ( plus2 ( 0 ) ) 
+    console.log ( plus2 ( 0 ) ) // -> 2
 }
 
 
@@ -136,18 +136,58 @@ const showStudentBehavior = () => {
 
 }
 
+const ReferentialTransparency = (  ) => {
+    // Referencial Transparency and substitutability
 
-// Referencial Transparency and substitutability
+    // if a function consistently yields the same result on the same input, its said to be
+    // referentially transparent.
 
-// if a function consistently yields the same result on the same input, its said to be
-// referentially transparent.
+    /*
 
-/*
+      Program = [Input] + [func1, func2, func3, ... ] -> Output
 
-Program = [Input] + [func1, func2, func3, ... ] -> Output
+    */
 
-*/
+    counterSideEfeects (  )
+}
 
-counterSideEfeects (  )
+const averageBreakPaces = (  ) => {
+
+    const some = ( ac, n ) => ac + n
+
+    const total = arr => arr.reduce ( some ) 
+
+    const size = arr => arr.reduce ( ( ac, n, i ) => i + 1 )
+
+    const divide = ( divident, divesor ) => divident / divesor
+
+    var input = [ 80, 90, 100 ]
+
+    var average = arr => divide ( total ( arr ), size ( arr ) )
+
+    console.log ( average ( input ) )
+
+    var average = divide ( 270, 3 ) // -> 90
+
+    console.log ( average ) 
+}
+
+
+var sortDesc = function ( arr ) {
+
+    return arr.sort( function ( a, b ) {
+
+	return b - a
+    } )
+}
+
+var arr = [1,2,3,4,5,6,7,8,9]
+
+console.log ( arr )
+
+console.log ( sortDesc ( arr ) )
+
+console.log ( arr )
+
 
 
