@@ -43,65 +43,111 @@ const powerthow = () => {
     console.log([0,1,2,3,4,5,6,7,8,9].map( r => Math.pow(r, 2)))
 }
 
-const counterSideEfeects = () => {
+const counterSideEfeects = (  ) => {
 
     var counter = 0 // side effects because the state global of counter is change in
     // any call function increment
-    function increment () {
+    function incrementN (  ) {
+	
 	return ++counter;
     }
+
+    var incrementF = counter => counter + 1
+
+    incrementN()
+    incrementN()
+    console.log(counter) // -> ?
+
+    const repet = times => dot => arg => { // new change to return the some of
+	// value to itself
+
+	if (times != 0) {
+	    
+	    return dot ( arg ) +
+		repet ( times - 1 )( dot )( arg )
+	} return arg
+    }
+
+    const run = (func1, func2) => arg => {
+	
+	return func1 ( func2 ( arg ) )
+    }
+    
+//    var plus2increment = repet ( 2 )( incrementF ) // works!
+    var plus2 = run ( incrementF, incrementF )
+    
+//    console.log ( plus2increment ( 0 ) ) 
+
+    console.log ( plus2 ( 0 ) ) 
 }
 
 
+const showStudentBehavior = () => {
 
+    function showStudent (ssn) {
 
-function showStudent (ssn) {
+	var student = db.get (ssn);
 
-    var student = db.get (ssn);
+	if (student !== null) {
 
-    if (student !== null) {
+	    console.log(student.ssn)
+	    console.log(student.fristname)
+	    console.log(student.lastname)
+	} else {
 
-	console.log(student.ssn)
-	console.log(student.fristname)
-	console.log(student.lastname)
-    } else {
-
-	throw new Error ('Student not Found')
+	    throw new Error ('Student not Found')
+	}
     }
-}
 
-showStudent('444-44-4444')
+    showStudent('444-44-4444')
 
 
-// decomposing the show student program
+    // decomposing the show student program
 
-var find = curry ( function(db, id) {
-    var obj = db.get(id)
-    if (obj === null) {
-	throw new Error ('Object not found')
-    }
-    return obj
-})
+    var find = curry ( function(db, id) {
+	var obj = db.get(id)
+	if (obj === null) {
+	    throw new Error ('Object not found')
+	}
+	return obj
+    })
 
-var csv = student => {
+    var csv = student => {
 
-    return `student.ssn, 
+	return `student.ssn, 
 	student.fristname, 
 	student.lastname`
+    }
+
+
+    var append = curry (function (elementId, info) {
+
+	console.log (elementId + '=' +info)
+    })
+
+    var showStudent = run =>  {
+
+	append('#student-info')
+	cvs
+	find(db)
+    }
+
+    showStudent ('444-44-4444')
+
 }
 
 
-var append = curry (function (elementId, info) {
+// Referencial Transparency and substitutability
 
-    console.log (elementId + '=' +info)
-})
+// if a function consistently yields the same result on the same input, its said to be
+// referentially transparent.
 
-var showStudent = run =>  {
+/*
 
-    append('#student-info')
-    cvs
-    find(db)
-}
+Program = [Input] + [func1, func2, func3, ... ] -> Output
 
-showStudent ('444-44-4444')
+*/
+
+counterSideEfeects (  )
+
 
