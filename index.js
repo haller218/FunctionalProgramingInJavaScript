@@ -172,22 +172,25 @@ const averageBreakPaces = (  ) => {
     console.log ( average ) 
 }
 
+const sortSideefects = (  ) => {
 
-var sortDesc = function ( arr ) {
+    var sortDesc = function ( arr ) {
 
-    return arr.sort( function ( a, b ) {
+	return arr.sort( function ( a, b ) {
 
-	return b - a
-    } )
+	    return b - a
+	} )
+    }
+
+    var arr = [1,2,3,4,5,6,7,8,9]
+
+    console.log ( arr )
+
+    console.log ( sortDesc ( arr ) )
+
+    console.log ( arr )
 }
 
-var arr = [1,2,3,4,5,6,7,8,9]
-
-console.log ( arr )
-
-console.log ( sortDesc ( arr ) )
-
-console.log ( arr )
 
 
 
