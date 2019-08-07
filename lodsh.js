@@ -124,10 +124,138 @@ const concat = (  ) => {
     return res
 } 
 
-const meth = (  ) => {
+const difference = (  ) => {
 
+    res = _.difference([2,1],[2,3])
 
+    obj = {'result': res}
+
+    return obj
+}
+
+const differenceBy = (  ) => {
+
+    obj = {}
+    
+    res = _.differenceBy([2.1, 1.2],[2.3,3.4], Math.floor)
+
+    res2 = _.differenceBy([{'x': 2,'x': 1}],[{'x': 1}], 'x')
+    
+    obj['result'] = res
+
+    obj['result2'] = res2
+    
+    return obj
+}
+
+const differenceWith = (  ) => {
+
+    obj = {}
+
+    objecst = [{ 'x': 2,'y': 1 },{ 'x': 2, 'y': 1 }]
+
+    res = _.differenceWith(objecst, [{ 'x': 1, 'y': 2 }], _.isEqual)
+    
+    obj['result'] = res
+
+    return obj
+
+}
+
+const drop = (  ) => {
+
+    lis = []
+    
+    lis.push( _.drop([1,2,3]))
+    lis.push( _.drop([1,2,3], 2))
+    lis.push( _.drop([1,2,3], 5))
+    lis.push( _.drop([1,2,3], 0))
+
+    res = {'list': lis}
+    
+    return res
 } 
+
+const dropRight = (  ) => {
+
+    lis = []
+    
+    lis.push( _.dropRight([1,2,3]))
+    lis.push( _.dropRight([1,2,3], 2))
+    lis.push( _.dropRight([1,2,3], 5))
+    lis.push( _.dropRight([1,2,3], 0))
+
+    res = {'list': lis}
+    
+    return res
+}
+
+const dropRightWhile = (  ) => {
+
+    var users = [
+	{'user': 'barney','active': true},
+	{'user': 'fred','active': false},
+	{'user': 'pebbles','active': false}
+    ]
+
+    list = []
+    
+    list.push(_.dropRightWhile( users, o => !o.active ))
+    list.push(_.dropRightWhile( users, {'users':'pebbles','ative':false}))
+    list.push(_.dropRightWhile( users, ['active',false]))
+    list.push(_.dropRightWhile( users, 'active'))
+    
+    obj = list
+    
+    return obj
+} 
+
+const dropWhile = (  ) => {
+
+    var users = [
+	{'user': 'barney','active': false},
+	{'user': 'fred','active': false},
+	{'user': 'pebbles','active': true}
+    ]
+
+    list = []
+    
+    list.push(_.dropWhile( users, o => !o.active ))
+    list.push(_.dropWhile( users, {'users':'pebbles','ative':false}))
+    list.push(_.dropWhile( users, ['active',false]))
+    list.push(_.dropWhile( users, 'active'))
+    
+    obj = list
+    
+    return obj
+} 
+
+const fill = ( ) => {
+
+    var array = [1,2,3]
+
+    lis = []
+    _.fill(array, 'a')
+
+    lis.push (array)
+
+    lis.push(_.fill(Array(3), 2))
+
+    lis.push(_.fill([4,6,8,10],'*',1,3))
+
+    return lis
+    
+}
+
+const each = ( ) => {
+
+
+}
+
+const meth = ( ) => {
+
+
+}
 
 
 const main = (() => {
@@ -140,7 +268,15 @@ const main = (() => {
 	assignIn,
 	chunk,
 	compact,
-	concat
+	concat,
+	difference,
+	differenceBy,
+	differenceWith,
+	drop,
+	dropRight,
+	dropRightWhile,
+	dropWhile,
+	fill
     ]
 
     const run = func => func (  )
